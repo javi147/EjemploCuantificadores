@@ -39,3 +39,9 @@ eventoNinguneado(Evento):-
 eventoNinguneado2(Evento):-
 %    evento(Evento,_,_,_,_),
     not(fue(Alguien,Evento)).
+
+%Persona con mucho dinero que no asiste a eventos
+personaAmarga(Alguien):-
+    persona(Alguien,_,Dinero),
+    Dinero > 100000,
+    not(fue(Alguien,Evento)).
