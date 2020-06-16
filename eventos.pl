@@ -10,6 +10,7 @@ fue(ana,los15deSonia).
 fue(ana,chauChau).
 fue(ana,cumpleDelMes).
 fue(pedro,felipito).
+fue(marta,cumpleDelMes).
 
 persona(juan,bsas,300).
 persona(pedro,quilmes,3000).
@@ -40,8 +41,21 @@ eventoNinguneado2(Evento):-
 %    evento(Evento,_,_,_,_),
     not(fue(Alguien,Evento)).
 
-%Persona con mucho dinero que no asiste a eventos
+%Persona con mucho dinero que no asiste a eventos al aire libre
 personaAmarga(Alguien):-
     persona(Alguien,_,Dinero),
     Dinero > 100000,
+    not(fueEventoAlAireLibre(Alguien)).
+
+fueEventoAlAireLibre(Alguien):-
+    fue(Alguien,Evento),
+    evento(Evento,_,_,aireLibre,_).
+
+
+predicadoSinNombre(Evento):-
+    evento(Evento,_,_,_,_),
+    not(falto(Alguien,Evento)).
+
+falto(Alguien,Evento):-
+    persona(Alguien,_,_),
     not(fue(Alguien,Evento)).
